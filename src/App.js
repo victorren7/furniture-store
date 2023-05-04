@@ -1,12 +1,31 @@
 import './App.css';
-import { FurnitureUpload } from './components/furnitureUpload';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-function App() {
+import { FurnitureUpload } from './components/furnitureUpload';
+import Shop from './components/Shop';
+import Home from './components/Home';
+import Nav from './components/Nav';
+
+const App = () => {
+
   return (
-    <div className="App">
-      <h2>React File Upload Demo</h2>
-      <FurnitureUpload />
+    <Router>
+    <div>
+      <Routes>
+        <Route path="/" element={<Nav/>}>
+          <Route index element={<Home/>} />
+          <Route path="/shop" element={<Shop/>}/>
+          <Route path="/upload" element={<FurnitureUpload/>} />
+        </Route>
+      </Routes>
     </div>
+    </Router>
   );
 }
 
