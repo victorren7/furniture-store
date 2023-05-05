@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import homeImage from './home-marquee.jpeg'
+import homeImage from '../../assets/home-marquee.jpeg'
 
 const Home = () => {
   return (

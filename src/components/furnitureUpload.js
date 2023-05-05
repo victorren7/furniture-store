@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
+import axios from 'axios';
 
 export const FurnitureUpload = () => {
+
+  const [postImage, setPostImage] = useState( { myFile : ""})
+
+  function convertToBase64(file){
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      };
+      fileReader.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }
+
+  const createPost = async (newImage) => {
+    try{
+      await axios.post('http://localhost:8000/api/v1/furniture', newImage)
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createPost(postImage)
+    console.log("Uploaded")
+  }
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    console.log(base64)
+    setPostImage({ ...postImage, myFile : base64 })
+  }
+  
+
   return (
     <Container>
       Add a new piece of furniture
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Label>
           Name:
           <Input type='text' name='name' />
@@ -24,7 +63,12 @@ export const FurnitureUpload = () => {
         </Label>
         <Label>
           Image:
-          <Input type='file' name='price' />
+          <Input 
+            type='file' 
+            name='image' 
+            accept='.jpeg, .png, .jpg'
+            onChange={(e) => handleFileUpload(e)}
+            />
         </Label>
         <button className="btn btn-primary" type="submit">Upload</button>
       </Form>
