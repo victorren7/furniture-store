@@ -9,22 +9,20 @@ import {
 
 import { FurnitureUpload } from './components/furnitureUpload';
 import Shop from './components/Shop';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Nav from './components/Nav';
 
 const App = () => {
 
   return (
     <Router>
-    <div>
       <Routes>
         <Route path="/" element={<Nav/>}>
           <Route index element={<Home/>} />
-          <Route path="/shop" element={<Shop/>}/>
-          <Route path="/upload" element={<FurnitureUpload/>} />
+          <Route path="shop" element={<Shop/>}/>
+          <Route path="upload" element={<FurnitureUpload/>} />
         </Route>
       </Routes>
-    </div>
     </Router>
   );
 }
