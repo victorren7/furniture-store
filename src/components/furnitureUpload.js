@@ -5,6 +5,8 @@ import axios from 'axios';
 export const FurnitureUpload = () => {
 
   const [postImage, setPostImage] = useState( { myFile : ""})
+  const [formData, setFormData] = useState({name: '', type: '', description: '', price: '', image: ''})
+
 
   function convertToBase64(file){
     return new Promise((resolve, reject) => {
@@ -19,9 +21,9 @@ export const FurnitureUpload = () => {
     })
   }
 
-  const createPost = async (newImage) => {
+  const postFurniture = async (data) => {
     try{
-      await axios.post('http://localhost:8000/api/v1/furniture', newImage)
+      await axios.post('http://localhost:8000/api/v1/furniture', data)
     }catch(error){
       console.log(error)
     }
@@ -29,15 +31,23 @@ export const FurnitureUpload = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createPost(postImage)
-    console.log("Uploaded")
+    setFormData((prevFormData) => ({ ...prevFormData, image: postImage.myFile}))
+    // postFurniture(formData)
+    if (formData.image) {
+      postFurniture(formData)
+    }
+
   }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    console.log(base64)
-    setPostImage({ ...postImage, myFile : base64 })
+    setPostImage({ myFile : base64 })
   }
   
 
@@ -47,19 +57,19 @@ export const FurnitureUpload = () => {
       <Form onSubmit={handleSubmit}>
         <Label>
           Name:
-          <Input type='text' name='name' />
+          <Input type='text' name='name' value={formData.name} onChange={handleChange} />
         </Label>
         <Label>
           Type:
-          <Input type='text' name='type' />
+          <Input type='text' name='type' onChange={handleChange} />
         </Label>
         <Label >
           Description:
-          <Input type='text' name='description' height={5}/>
+          <Input type='text' name='description' height={5} onChange={handleChange}/>
         </Label>
         <Label>
           Price:
-          <Input type='text' name='price' />
+          <Input type='text' name='price' onChange={handleChange}/>
         </Label>
         <Label>
           Image:
