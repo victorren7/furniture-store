@@ -17,11 +17,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Nav/>}>
+        {/* <Route path="/" element={<Nav/>}> */}
           <Route index element={<Home/>} />
           <Route path="shop" element={<Shop/>}/>
           <Route path="upload" element={<FurnitureUpload/>} />
-        </Route>
+        {/* </Route> */}
       </Routes>
     </Router>
   );

@@ -1,26 +1,19 @@
 import React from 'react'
 import styled from 'styled-components';
 import homeImage from '../../assets/home-marquee.jpeg'
+import Header from './Header';
 
 const Home = () => {
   return (
-    <div>
-      <Header>
-        <Image alt='header' src={homeImage}/>
-        <h1>HEllo</h1>
-      </Header>
-    </div>
+    <Container>
+      <Header />
+    </Container>
   )
 }
 
 export default Home
 
-const Header = styled.div`
- 
+const Container = styled.div`
+  
 `
 
-const Image = styled.img`
-  width: 100vw;
-  height: 100vh;
-  transform: scaleX(-1);
-`
