@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-import homeImage from '../../assets/home-marquee.jpeg'
 import Header from './Header';
+import About from './About';
 
 const Home = () => {
   return (
     <Container>
       <Header />
+      <About />
     </Container>
   )
 }

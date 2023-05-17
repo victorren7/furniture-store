@@ -38,7 +38,6 @@ const Title = styled.h2`
 
 const Image = styled.img`
   width: 100vw;
-  height: 100vh;
   transform: scaleX(-1);
 `
 
