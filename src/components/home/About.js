@@ -8,7 +8,7 @@ const About = () => {
     <Container>
       <Grid>
         <Content>
-          <H1>Crafted for you</H1>
+          <H2>Crafted for you</H2>
           <p>Handmade and made-to-measure, each piece from Custom & Nooke is personal and unlike any other. Inspired by the clean lines, cozy feel, and monochromatic palette of a modern minimalist home, we ensure every single piece reflects the passion and craftsmanship we spent years developing and perfecting.</p>
         </Content>
         <Image alt='crafted-chair' src={craftedChair} />
@@ -41,7 +41,7 @@ const Content = styled.div`
   font-family: system-ui;
 `
 
-const H1 = styled.h1`
+const H2 = styled.h2`
   font-size: 60px;
 `
 
