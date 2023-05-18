@@ -3,13 +3,23 @@ import styled from 'styled-components';
 import Header from './Header';
 import About from './About';
 import Products from '../Products';
+import Testimonials from './Testimonials';
 
 const Home = () => {
   return (
     <Container>
-      <Header />
-      <About />
-      <Products />
+      <section>
+        <Header />
+      </section>
+      <section>
+        <About />
+      </section>
+      <section>
+        <Products />
+      </section>
+      <section>
+        <Testimonials />
+      </section>
     </Container>
   )
 }
