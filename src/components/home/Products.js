@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-import stoneware from '../assets/stoneware.jpeg'
-import furnitureChair from '../assets/furniture-chair.jpg'
-import frame from '../assets/frame.jpeg'
+import stoneware from '../../assets/stoneware.jpeg'
+import furnitureChair from '../../assets/furniture-chair.jpg'
+import frame from '../../assets/frame.jpeg'
 
 
 const Products = () => {

@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
+
 import Header from './Header';
 import About from './About';
-import Products from '../Products';
+import Products from './Products';
 import Testimonials from './Testimonials';
+import Footer from '../Footer';
 
 const Home = () => {
   return (
@@ -20,6 +22,7 @@ const Home = () => {
       <section>
         <Testimonials />
       </section>
+      <Footer />
     </Container>
   )
 }

@@ -17,7 +17,7 @@ const Header = () => {
         </H1>
         <Button>SHOP</Button>
       </Content>
-  </Container>
+    </Container>
   )
 }
 
