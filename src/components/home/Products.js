@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import stoneware from '../../assets/stoneware.jpeg'
 import furnitureChair from '../../assets/furniture-chair.jpg'
 import frame from '../../assets/frame.jpeg'
+import { screenSize } from '../../utils/screensize';
 
 
 const Products = () => {
@@ -42,8 +43,8 @@ export default Products
 
 const Container = styled.section`
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  // height: 100%;
   justify-content: center;
   align-items:center;
   background-color: #F3F4E7;
@@ -52,18 +53,35 @@ const Container = styled.section`
 const Flex = styled.div`
   display: flex;
   width: 90%;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   gap: 10rem;
-  // border: 1px solid black;
+  margin: 10rem 4rem;
+
+  @media ${screenSize.desktop} {
+    flex-direction: row;
+  }
 `
 
 const ProductContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 3rem;
+
+  @media ${screenSize.desktop} {
+    flex-direction: row;
+
+  }
 `
 
-const Content = styled.div``
+const Content = styled.div`
+  align-self: center;
+
+  @media ${screenSize.desktop} {
+    align-self: flex-start;
+  }
+`
 
 const H2 = styled.h2`
   font-size: 50px;
@@ -75,7 +93,7 @@ const Product = styled.div`
 `
 
 const Image = styled.img`
-  width: 19rem;
+  width: 100%;
   height: 28rem;
 `
 
@@ -91,10 +109,15 @@ const Button = styled(Link)`
   display: flex;
   width: 10rem;
   height: 2.5rem;
-  background-color: #81A969;
   border-radius: .2rem;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  background-color: #81A969;
   text-decoration: none;
   color: #fff;
+
+  @media ${screenSize.desktop} {
+    margin: inherit;
+  }
 `
