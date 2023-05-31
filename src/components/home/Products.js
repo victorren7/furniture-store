@@ -56,7 +56,12 @@ const Flex = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 10rem;
-  margin: 10rem 4rem;
+
+  @media ${screenSize.tablet} {
+    margin: 10rem 4rem;
+
+  }
+
 
   @media ${screenSize.desktop} {
     flex-direction: row;

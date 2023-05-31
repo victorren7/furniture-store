@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 import homeImage from '../../assets/home-marquee.jpeg'
+import homeImageMobile from '../../assets/home-marquee-mobile.jpg'
+import { screenSize } from '../../utils/screensize';
 
 const Header = () => {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const isMobile = windowWidth <= 767;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, []);
+
   return (
     <Container>
-      <Image alt='Container' src={homeImage}/>
+      <Image alt='Container' src={isMobile ? homeImageMobile : homeImage}/>
       <Title>Renderos <br/>Furniture</Title>
       <Content>
         <H1>
@@ -43,13 +62,22 @@ const Image = styled.img`
 
 const Content = styled.div`
   position: absolute;
-  top: 35%;
+  top: 24%;
   margin-left: 3rem;
+
+  @media ${screenSize.tablet} {
+    top: 35%;
+  }
 `
 
 const H1 = styled.h1`
-  font-size: 100px;
-  margin: 2rem 0;
+  font-size: 62px;
+
+  @media ${screenSize.tablet} {
+    font-size: 100px;
+    margin: 2rem 0;
+
+  }
 `
 
 const Button = styled(Link)`

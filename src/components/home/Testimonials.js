@@ -73,18 +73,24 @@ const TestimonialsContainer = styled.div`
 `
 
 const Testimonial = styled.div`
-  width: 30rem;
+  width: 22rem;
+
+  @media ${screenSize.tablet} {
+    width: 30rem;
+
+  }
+
 `
 
 const Image = styled.img`
-  width: 30rem;
-  height: 29.5rem;
+  width: 20rem;
+  height: 19.5rem;
   border-radius: .5rem;
 
-  // @media ${screenSize.desktop} {
-  //   width: 38rem;
-  //   height: 37.5rem;
-  // }
+  @media ${screenSize.tablet} {
+    width: 30rem;
+    height: 29.5rem;
+  }
 
   @media ${screenSize.desktop} {
     width: 25rem;
