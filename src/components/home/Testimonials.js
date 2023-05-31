@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import sariPurdue from '../../assets/sari-purdue.jpeg'
 import musaWatson from '../../assets/musa-watson.jpeg'
 import freyaMoore from '../../assets/freya-moore.jpeg'
+import { screenSize } from '../../utils/screensize';
 
 
 const Testimonials = () => {
@@ -17,7 +18,6 @@ const Testimonials = () => {
   return (
     <Container>
       <Content>
-
         <H2>Loved by <br/> humans, made by humans</H2>
         <TestimonialsContainer>
           {testimonials.map((item, i) => (
@@ -38,7 +38,6 @@ export default Testimonials
 const Container = styled.div`
   display: flex;  
   width: 100vw;
-  height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: #81A969;
@@ -49,6 +48,8 @@ const Content = styled.div`
   width: 90%;
   flex-direction: column;
   justify-content: center;
+  margin: 4rem 0;
+
 `
 
 const H2 = styled.h2`
@@ -59,18 +60,36 @@ const H2 = styled.h2`
 
 const TestimonialsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
   gap: 3rem;
   color: #fff;
+
+  @media ${screenSize.desktop} {
+    flex-direction: row;
+
+  }
 `
 
 const Testimonial = styled.div`
-  width: 27rem;
+  width: 30rem;
 `
 
 const Image = styled.img`
-  width: 25rem;
-  height: 24.5rem;
+  width: 30rem;
+  height: 29.5rem;
   border-radius: .5rem;
+
+  // @media ${screenSize.desktop} {
+  //   width: 38rem;
+  //   height: 37.5rem;
+  // }
+
+  @media ${screenSize.desktop} {
+    width: 25rem;
+    height: 24.5rem;
+  }
 `
 
 const Name = styled.h3`
