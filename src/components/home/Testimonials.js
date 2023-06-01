@@ -83,6 +83,7 @@ const Testimonial = styled.div`
 `
 
 const Image = styled.img`
+  max-width: 100%;
   width: 20rem;
   height: 19.5rem;
   border-radius: .5rem;

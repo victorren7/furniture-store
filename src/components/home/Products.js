@@ -44,7 +44,6 @@ export default Products
 const Container = styled.section`
   display: flex;
   width: 100%;
-  // height: 100%;
   justify-content: center;
   align-items:center;
   background-color: #F3F4E7;
@@ -98,7 +97,8 @@ const Product = styled.div`
 `
 
 const Image = styled.img`
-  width: 100%;
+  max-width: 100%;
+  width: 22rem;
   height: 28rem;
 `
 
