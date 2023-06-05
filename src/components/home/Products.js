@@ -21,7 +21,7 @@ const Products = () => {
       <Flex>
         <Content>
           <H2>Perfect for <br /> your home</H2>
-          <Button>VIEW PRODUCTS</Button>
+          <Button to='/shop'>VIEW PRODUCTS</Button>
         </Content>
 
         <ProductContainer>
