@@ -34,7 +34,7 @@ const Header = () => {
           <br />
           your home
         </H1>
-        <Button>SHOP</Button>
+        <Button to='/shop'>SHOP</Button>
       </Content>
     </Container>
   )
@@ -49,7 +49,6 @@ const Container = styled.div`
 
 const Title = styled.h2`
   position: absolute;
-  font-fam
   font-size: 30px;
   margin-left: 3rem;
   top: 1%;

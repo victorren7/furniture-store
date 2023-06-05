@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Header from './Header';
+import Hero from './Hero';
 import About from './About';
 import Products from './Products';
 import Testimonials from './Testimonials';
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Container>
       <section>
-        <Header />
+        <Hero />
       </section>
       <section>
         <About />
