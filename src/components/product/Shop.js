@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 import { database } from '../../utils/database';
+import { screenSize } from '../../utils/screensize';
 
 import leftArrow from '../../assets/left-icon.png'
 
@@ -83,11 +84,20 @@ const Product = styled.div`
 `
 
 const Image = styled.img`
-  width: 25rem;
+  width: 16rem;
   border-radius: .5rem;
+
+  @media ${screenSize.desktop} {
+    width: 25rem;
+  }
 `
 
 const ProductTitle = styled.span`
+  width: 16rem;
+
+  @media ${screenSize.desktop} {
+    width: 25rem;
+  }
 
 `
 
