@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import { FurnitureUpload } from './components/furnitureUpload';
-import Shop from './components/Shop';
+import Shop from './components/product/Shop';
 import Home from './components/home/Home';
 import Nav from './components/Nav';
 

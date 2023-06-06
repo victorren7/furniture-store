@@ -60,7 +60,7 @@ export const database = [
   {  
     name: "Mico Rattan Armchair",
     type: "chair",
-    image: teaKettle,
+    image: armchair,
     description: "Weaved in rattan, Mico's relaxed, unique form offers a blend of Danish modern style and breezy tropical vibes. Can go perfect for a final piece in the living room, or even better as an outside.",
     price: 695,
     link: "https://www.castlery.com/us/products/mico-rattan-armchair"
