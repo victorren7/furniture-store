@@ -14,9 +14,11 @@ const Shop = () => {
   function product() {
 
     return database.map((product, i) =>  (
-      <Product>
+      <Product key={i}>
         <Image alt={product.name} src={product.image} />
-        <ProductTitle>{product.name}</ProductTitle>
+        <Link to={`/shop/${product.name}`}>
+          <ProductTitle>{product.name}</ProductTitle>
+        </Link>
         <Price>${product.price.toLocaleString()}.00</Price>
       </Product>
     ))

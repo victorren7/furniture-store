@@ -10,6 +10,7 @@ import armchair from '../assets/products/Mico-Armchair-Lifestyle.jpeg'
 
 export const database = [
   {  
+    id: 1,
     name: "Tabor Green Sectional Sofa",
     type: "sofa",
     image: taborSofa,
@@ -18,6 +19,7 @@ export const database = [
     link: "https://www.crateandbarrel.com/timson-green-velvet-2-piece-left-arm-chaise-sectional-sofa/s123601"
   },
   {  
+    id: 2,
     name: "Ojai Upholstered Accent Chair",
     type: "chair",
     image: ojaiChair,
@@ -26,6 +28,7 @@ export const database = [
     link: "https://www.crateandbarrel.com/ojai-upholstered-wood-frame-accent-chair/s411188"
   },
   {  
+    id: 3,
     name: "Tea Kettle with Maple Handle",
     type: "tea kettle",
     image: teaKettle,
@@ -34,6 +37,7 @@ export const database = [
     link: "https://www.crateandbarrel.com/fellow-stagg-ekg-matte-grey-electric-pour-over-tea-kettle-with-maple-handle/s614048"
   },
   {  
+    id: 4,
     name: "Modern Farmhouse Round Dining Table",
     type: "table",
     image: roundFarmTable,
@@ -42,6 +46,7 @@ export const database = [
     link: 'https://www.potterybarn.com/products/modern-farmhouse-round-pedestal-extending-dining-table/?pkey=s~dining%20table~309'
   },
   {  
+    id: 5,
     name: "Woodstock Rectangular Coffee Table",
     type: "table",
     image: coffeeTable,
@@ -50,6 +55,7 @@ export const database = [
     link: "https://www.potterybarn.com/products/westbrook-rectangular-coffee-table/?pkey=s~coffee%20table~297"
   },
   {  
+    id: 6,
     name: "Otter Charging Nightstand",
     type: "nightstand",
     image: nightStand,
@@ -58,6 +64,7 @@ export const database = [
     link: "https://www.potterybarn.com/products/cayman-mini-nightstand/?pkey=s~cayman%20nightstand~3"
   },
   {  
+    id: 7,
     name: "Mico Rattan Armchair",
     type: "chair",
     image: armchair,
@@ -66,6 +73,7 @@ export const database = [
     link: "https://www.castlery.com/us/products/mico-rattan-armchair"
   },
   {  
+    id: 8,
     name: "The Sideboard",
     type: "sideboard",
     image: sideboard,
@@ -74,6 +82,7 @@ export const database = [
     link: "https://www.castlery.com/us/products/sawyer-sideboard"
   },
   {  
+    id: 9,
     name: "Haven Loft Sofa",
     type: "sofa",
     image: havenSofa,
