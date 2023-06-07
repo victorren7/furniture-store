@@ -21,18 +21,19 @@ const Product = () => {
     }
   }, [productName])
   
-console.log('product', product)
-  
-  
   return (
     <Container>
       <ProductRow>
         <Image alt={product.name} src={product.image} />
-        <Column>
-          <ProductName>{product.name}</ProductName>
-          <Price>${product.price.toLocaleString()}.00</Price>
-          <hr />
-        </Column>
+        <Content>
+          <Column>
+            <ProductName>{product.name}</ProductName>
+            <Price>${product.price ? product.price.toLocaleString() : '000'}.00</Price>
+            <Hr />
+            <Description>{product.description}</Description>
+          </Column>
+          <Button>Add to cart</Button>
+        </Content>
       </ProductRow>
       <Carousel>
 
@@ -55,8 +56,15 @@ const ProductRow = styled.div`
   gap: 15rem;
   width: 90%;
   margin: 10rem;
- border: 1px solid black;
 `
+
+const Content = styled.div`
+  display: flex;
+  width: 37%;
+  flex-direction: column;
+  justify-content: space-evenly;
+`
+
 const Carousel = styled.div`
   width: 15rem;
   height: 10rem;
@@ -68,15 +76,34 @@ const Column = styled.div`
   flex-direction: column;
 `
 
+const Button = styled.button`
+  width: 20rem;
+  height: 3rem;
+  color: #fff;
+  background-color: #000;
+`
+
 const Image = styled.img`
   width: 35rem;
+  border-radius: .5rem;
 `
 
 const ProductName = styled.span`
   font-size: 36px;
+  margin-bottom: 1rem;
 `
 
 const Price = styled.span`
   font-size: 20px;
+  margin-bottom: 1rem;
+`
+
+const Hr = styled.hr`
+  width: 100%;
+`
+
+const Description = styled.span`
+  font-size: 14px;
+  margin-top: .5rem;
 `
 
