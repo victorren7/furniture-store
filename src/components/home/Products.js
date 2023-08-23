@@ -55,15 +55,16 @@ const Flex = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 10rem;
+  padding-bottom: 7rem;
 
   @media ${screenSize.tablet} {
     margin: 10rem 4rem;
-
+    padding-bottom: 0;
   }
-
 
   @media ${screenSize.desktop} {
     flex-direction: row;
+
   }
 `
 
@@ -75,7 +76,7 @@ const ProductContainer = styled.div`
 
   @media ${screenSize.desktop} {
     flex-direction: row;
-
+    flex-flow: wrap;
   }
 `
 

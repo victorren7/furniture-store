@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 
 import { database } from '../../utils/database';
+import { screenSize } from '../../utils/screensize';
+
+import leftIcon from '../../assets/left-icon.png'
+import cartIcon from '../../assets/cart-icon.png'
 
 
 const Product = () => {
@@ -23,7 +27,16 @@ const Product = () => {
   
   return (
     <Container>
-      <ProductRow>
+      <AddToCartNav>
+        <CartButton>
+          <CartImage src={cartIcon} alt='cart button' />
+        </CartButton>
+      </AddToCartNav>
+      <BackLink to={'/shop'}>
+        <ArrowImg src={leftIcon} alt='back-to-shop'/>
+        <span>Back to shop</span>
+      </BackLink>
+      <ProductInfo>
         <Image alt={product.name} src={product.image} />
         <Content>
           <Column>
@@ -34,7 +47,7 @@ const Product = () => {
           </Column>
           <Button>Add to cart</Button>
         </Content>
-      </ProductRow>
+      </ProductInfo>
       <Carousel>
 
       </Carousel>
@@ -50,19 +63,57 @@ const Container = styled.div`
   align-items: center;
 `
 
-const ProductRow = styled.div`
+const AddToCartNav = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 15rem;
+  justify-content: flex-end;
+  width: 100%;
+  height: 5rem;
+  border-bottom: 1px solid black;
+
+  @media ${screenSize.desktop} {
+    height: 6rem;
+  }
+`
+
+const CartButton = styled.button`
+  margin-right: 2rem;
+`
+
+const CartImage = styled.img`
+  width: 2rem;
+`
+
+const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   width: 90%;
-  margin: 10rem;
+  margin: 5rem 10rem 10rem 10rem;
+
+  @media ${screenSize.desktop} {
+    gap: 5rem;
+
+  }
+
+  @media ${screenSize.desktop} {
+    flex-direction: row;
+    gap: 15rem;
+
+  }
 `
 
 const Content = styled.div`
   display: flex;
-  width: 37%;
+  width: 85%;
+  align-self: center;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media ${screenSize.desktop} {
+    width: 37%;
+    align-self: normal;
+
+  }
 `
 
 const Carousel = styled.div`
@@ -77,20 +128,42 @@ const Column = styled.div`
 `
 
 const Button = styled.button`
-  width: 20rem;
+  width: 100%;
   height: 3rem;
+  border: none;
   color: #fff;
+  border-radius: 0.5rem;
   background-color: #000;
 `
 
 const Image = styled.img`
-  width: 35rem;
+  width: 22rem;
+  align-self : center;
   border-radius: .5rem;
+
+  @media ${screenSize.tablet} {
+    width: 35rem;
+  }
+`
+
+const BackLink = styled(Link)`
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: .5rem;
+  margin: 5rem 0 0 6rem;
+  color: black;
+  text-decoration: none;
 `
 
 const ProductName = styled.span`
   font-size: 36px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+
+  @media ${screenSize.desktop} {
+    margin-bottom: 1rem;
+
+  }
 `
 
 const Price = styled.span`
@@ -105,5 +178,16 @@ const Hr = styled.hr`
 const Description = styled.span`
   font-size: 14px;
   margin-top: .5rem;
+  margin-bottom: 5rem;
+
+
+  @media ${screenSize.desktop} {
+    margin-bottom: 0;
+  }
+`
+
+const ArrowImg = styled.img`
+  width: 1.5rem;
+
 `
 

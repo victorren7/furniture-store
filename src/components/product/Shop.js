@@ -16,9 +16,9 @@ const Shop = () => {
     return database.map((product, i) =>  (
       <Product key={i}>
         <Image alt={product.name} src={product.image} />
-        <Link to={`/shop/${product.name}`}>
+        <ProductLink to={`/shop/${product.name}`}>
           <ProductTitle>{product.name}</ProductTitle>
-        </Link>
+        </ProductLink>
         <Price>${product.price.toLocaleString()}.00</Price>
       </Product>
     ))
@@ -92,6 +92,11 @@ const Image = styled.img`
   @media ${screenSize.desktop} {
     width: 25rem;
   }
+`
+
+const ProductLink = styled(Link)`
+  color: #000;
+  text-decoration: none;
 `
 
 const ProductTitle = styled.span`
