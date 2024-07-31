@@ -38,7 +38,7 @@ const Footer = () => {
         <Title>Help me help you</Title>
         <LinksContent>
           {links.map((link, i) => (
-            <LinkContainer>
+            <LinkContainer key={i}>
               <H3>{link.profile}</H3>
               <Anchor href={i === 2 ? `mailto:${link.url}` : link.url} target='_blank'>{link.url}</Anchor>
             </LinkContainer>

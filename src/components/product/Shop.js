@@ -15,7 +15,9 @@ const Shop = () => {
 
     return database.map((product, i) =>  (
       <Product key={i}>
-        <Image alt={product.name} src={product.image} />
+        <ImageContainer>
+          <Image alt={product.name} src={product.image} />
+        </ImageContainer>
         <ProductLink to={`/shop/${product.name}`}>
           <ProductTitle>{product.name}</ProductTitle>
         </ProductLink>
@@ -83,6 +85,10 @@ const Product = styled.div`
   flex-direction: column;
   gap: 1rem;
   font-size: 18px;
+`
+
+const ImageContainer = styled.div`
+  height: 28rem;
 `
 
 const Image = styled.img`

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
+import Slider from 'react-slick';
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import { database } from '../../utils/database';
 import { screenSize } from '../../utils/screensize';
@@ -13,6 +17,7 @@ const Product = () => {
   const {productName} = useParams()
 
   const [product, setProduct] = useState({})
+  const [randomFive, setRandomFive] = useState([])
 
   useEffect(() => {
     for (let i = 0; i < database.length; i++) {
@@ -24,6 +29,27 @@ const Product = () => {
       
     }
   }, [productName])
+
+  useEffect(() => {
+    const generator = [...database].sort(() => .5 - Math.random())
+
+    setRandomFive(generator.slice(0, 6))
+  }, [])
+
+  async function mightLikeProducts(randomFive) {
+
+      return randomFive.map((product, i) =>  (
+        <MightLike key={i}>
+        <MightLikeImage alt={product.name} src={product.image} />
+        <MightLikeLink to={`/shop/${product.name}`}>
+          <MightLikeTitle>{product.name}</MightLikeTitle>
+        </MightLikeLink>
+        <Price>${product.price.toLocaleString()}.00</Price>
+      </MightLike>
+    ))
+  // }
+
+  }
   
   return (
     <Container>
@@ -48,9 +74,72 @@ const Product = () => {
           <Button>Add to cart</Button>
         </Content>
       </ProductInfo>
-      <Carousel>
-
-      </Carousel>
+      <CarouselWrapper>
+        <Span>You might also like</Span>
+        <Carousel
+          additionalTransfrom={0}
+          // arrows
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=""
+          containerClass="container-with-dots"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          // renderArrowsWhenDisabled={false}
+          // renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024
+              },
+              items: 4,
+              partialVisibilityGutter: 40
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0
+              },
+              items: 1,
+              partialVisibilityGutter: 30
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464
+              },
+              items: 2,
+              partialVisibilityGutter: 30
+            }
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={2}
+          swipeable
+        >
+          {randomFive?.map((product, i) =>  (
+            <MightLike key={i}>
+            <MightLikeImage alt={product.name} src={product.image} />
+            <MightLikeLink to={`/shop/${product.name}`}>
+            <MightLikeTitle>{product.name}</MightLikeTitle>
+            </MightLikeLink>
+            <Price>${product.price.toLocaleString()}.00</Price>
+            </MightLike>
+          ))}
+        </Carousel>
+      </CarouselWrapper>
     </Container>
   )
 }
@@ -61,6 +150,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 8rem;
 `
 
 const AddToCartNav = styled.div`
@@ -116,10 +206,15 @@ const Content = styled.div`
   }
 `
 
-const Carousel = styled.div`
-  width: 15rem;
-  height: 10rem;
-  border: 1px solid red;
+const CarouselWrapper = styled.div`
+  width: 80%;
+  // height: 10rem;
+  // border: 1px solid red;
+  // margin-top: 10rem;
+`
+
+const Span = styled.span`
+  font-size: 20px;
 `
 
 const Column = styled.div`
@@ -188,6 +283,36 @@ const Description = styled.span`
 
 const ArrowImg = styled.img`
   width: 1.5rem;
+
+`
+
+const MightLike = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 18px;
+`
+
+const MightLikeImage = styled.img`
+  width: 16rem;
+  border-radius: .5rem;
+
+  @media ${screenSize.desktop} {
+    width: 12rem;
+  }
+`
+
+const MightLikeLink = styled(Link)`
+  color: #000;
+  text-decoration: none;
+`
+
+const MightLikeTitle = styled.span`
+  width: 16rem;
+
+  @media ${screenSize.desktop} {
+    width: 25rem;
+  }
 
 `
 

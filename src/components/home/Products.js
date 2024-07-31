@@ -16,6 +16,17 @@ const Products = () => {
     {img: frame, title: 'Decor', content: 'Elements that give the room an elevated look'},
 
   ]
+
+  function productDetails() {
+    // eslint-disable-next-line no-lone-blocks
+    {products.map((product) => (
+      <Product key={product}>
+        <Image alt={product.title} src={product.img} />
+        <Title>{product.title}</Title>
+        <Span>{product.content}</Span>
+      </Product >
+    ))}
+  }
   return (
     <Container>
       <Flex>
@@ -25,13 +36,7 @@ const Products = () => {
         </Content>
 
         <ProductContainer>
-          {products.map((product, i) => (
-            <Product>
-              <Image alt={product.title} src={product.img} />
-              <Title>{product.title}</Title>
-              <Span>{product.content}</Span>
-            </Product >
-          ))}
+          {productDetails()}
          
         </ProductContainer>
       </Flex>
@@ -94,7 +99,6 @@ const H2 = styled.h2`
 
 const Product = styled.div`
   width: 19rem;
-
 `
 
 const Image = styled.img`

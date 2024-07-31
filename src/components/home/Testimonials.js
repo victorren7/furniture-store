@@ -21,7 +21,7 @@ const Testimonials = () => {
         <H2>Loved by <br/> humans, made by humans</H2>
         <TestimonialsContainer>
           {testimonials.map((item, i) => (
-            <Testimonial>
+            <Testimonial key={i}>
               <Image alt={item.title} src={item.img} />
               <Name>{item.title}</Name>
               <Span>"{item.content}"</Span>
