@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
-import Slider from 'react-slick';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import ShoppingCart from './ShoppingCart';
 
 import { database } from '../../utils/database';
 import { screenSize } from '../../utils/screensize';
 
 import leftIcon from '../../assets/left-icon.png'
-import cartIcon from '../../assets/cart-icon.png'
 
 
 const Product = () => {
@@ -54,9 +53,7 @@ const Product = () => {
   return (
     <Container>
       <AddToCartNav>
-        <CartButton>
-          <CartImage src={cartIcon} alt='cart button' />
-        </CartButton>
+        <ShoppingCart />
       </AddToCartNav>
       <BackLink to={'/shop'}>
         <ArrowImg src={leftIcon} alt='back-to-shop'/>
@@ -91,8 +88,6 @@ const Product = () => {
           keyBoardControl
           minimumTouchDrag={80}
           pauseOnHover
-          // renderArrowsWhenDisabled={false}
-          // renderButtonGroupOutside={false}
           renderDotsOutside={false}
           responsive={{
             desktop: {
@@ -163,14 +158,6 @@ const AddToCartNav = styled.div`
   @media ${screenSize.desktop} {
     height: 6rem;
   }
-`
-
-const CartButton = styled.button`
-  margin-right: 2rem;
-`
-
-const CartImage = styled.img`
-  width: 2rem;
 `
 
 const ProductInfo = styled.div`
