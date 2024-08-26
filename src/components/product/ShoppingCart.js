@@ -4,10 +4,18 @@ import styled from 'styled-components';
 import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = () => {
+
+  const openCart = () => {
+    
+  }
   return (
     <div>
       <CartButton>
-        <CartImage src={cartIcon} alt='cart button' />
+        <CartImage 
+          src={cartIcon} 
+          alt='cart button' 
+          onClick={openCart}
+        />
       </CartButton>
     </div>
   )
