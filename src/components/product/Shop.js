@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -10,10 +11,11 @@ import leftArrow from '../../assets/left-icon.png'
 
 const Shop = () => {
 
+  const products = useSelector((store) => store.cart.products)
 
   function product() {
 
-    return database.map((product, i) =>  (
+    return products.map((product, i) =>  (
       <Product key={i}>
         <ImageContainer>
           <Image alt={product.name} src={product.image} />
