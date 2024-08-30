@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -10,10 +11,13 @@ import { database } from '../../utils/database';
 import { screenSize } from '../../utils/screensize';
 
 import leftIcon from '../../assets/left-icon.png'
+import { addItem, updateTotal } from '../../features/cartSlice';
 
 
 const Product = () => {
   const {productName} = useParams()
+  const dispatch = useDispatch();
+  const { inShoppingCart } = useSelector((store) => store.cart.inShoppingCart) 
 
   const [product, setProduct] = useState({})
   const [randomFive, setRandomFive] = useState([])
@@ -28,6 +32,11 @@ const Product = () => {
       
     }
   }, [productName])
+
+  // useEffect(() => {
+  //   dispatch(updateTotal())
+  // }, [inShoppingCart, dispatch])
+  
 
   useEffect(() => {
     const generator = [...database].sort(() => .5 - Math.random())
@@ -68,7 +77,9 @@ const Product = () => {
             <Hr />
             <Description>{product.description}</Description>
           </Column>
-          <Button>Add to cart</Button>
+          <Button onClick={() => dispatch(addItem({product}))}>
+            Add to cart
+          </Button>
         </Content>
       </ProductInfo>
       <CarouselWrapper>

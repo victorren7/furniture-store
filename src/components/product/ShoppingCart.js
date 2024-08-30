@@ -6,7 +6,7 @@ import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = () => {
 
-  const amount = useSelector((store) => store.cart.amount)
+  const productAmount = useSelector((store) => store.cart.inShoppingCart)
 
   const openCart = () => {
     
@@ -19,7 +19,7 @@ const ShoppingCart = () => {
           alt='cart button' 
           onClick={openCart}
         />
-        <Amount>{amount}</Amount>
+        <Amount>{productAmount.length}</Amount>
       </CartButton>
     </div>
   )

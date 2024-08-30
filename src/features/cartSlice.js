@@ -13,15 +13,23 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, {payload}) => {
-      const item = state.products.find(item => item.name === payload.name)
-      item.amount++
-      state.inShoppingCart.push(item)
+      state.inShoppingCart.push(payload.product)
+      state.amount++
+      state.total += payload.product.price
     },
     removeItem: (state, {payload}) => {
       const item = state.products.find(item => item.name === payload.name)
-      item.amount--
       state.inShoppingCart.filter(item.name !== payload.name)
-    }
+      state.amount--
+      state.total -= payload.product.price
+
+    },
+    // updateTotal: (state) => {
+    //   for (let i = 0; i < state.inShoppingCart.length; i++) {
+    //     const element = state.inShoppingCart[i];
+    //    console.log('element', element)
+    //   }
+    // }
   }
 })
 
