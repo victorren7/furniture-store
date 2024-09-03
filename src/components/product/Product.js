@@ -17,7 +17,7 @@ import { addItem, updateTotal } from '../../features/cartSlice';
 const Product = () => {
   const {productName} = useParams()
   const dispatch = useDispatch();
-  const { inShoppingCart } = useSelector((store) => store.cart.inShoppingCart) 
+  const { inShoppingCart } = useSelector((store) => store.cart) 
 
   const [product, setProduct] = useState({})
   const [randomFive, setRandomFive] = useState([])
@@ -33,16 +33,15 @@ const Product = () => {
     }
   }, [productName])
 
-  // useEffect(() => {
-  //   dispatch(updateTotal())
-  // }, [inShoppingCart, dispatch])
-  
-
   useEffect(() => {
     const generator = [...database].sort(() => .5 - Math.random())
 
     setRandomFive(generator.slice(0, 6))
   }, [])
+
+  const showButton = () => {
+    return inShoppingCart.filter((prod) => prod.name === product.name)
+  }
 
   async function mightLikeProducts(randomFive) {
 
@@ -62,7 +61,7 @@ const Product = () => {
   return (
     <Container>
       <AddToCartNav>
-        <ShoppingCart />
+        <ShoppingCart product={inShoppingCart} />
       </AddToCartNav>
       <BackLink to={'/shop'}>
         <ArrowImg src={leftIcon} alt='back-to-shop'/>
