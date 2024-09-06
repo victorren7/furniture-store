@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components';
+import taborSofa from '../../assets/products/tabor-green-sofa.jpeg'
 
 import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = ({product}) => {
 
   const productAmount = useSelector((store) => store.cart.inShoppingCart)
+  const priceTotal = useSelector((store) => store.cart.total)
+
 
   const [shoppingCartOpen, setShoppingCartOpen] = useState(false)
 
@@ -18,7 +21,7 @@ const ShoppingCart = ({product}) => {
         <div>
           <CartRow key={i}>
             <ItemInfo>
-              <Thumbnail alt={product.name} src={product.image} />
+              <Thumbnail alt={product.name} src={taborSofa} />
               <CartItemSpan>{item.name}</CartItemSpan>
             </ItemInfo>
             <CartItemSpan>${item.price}.00</CartItemSpan>
@@ -44,6 +47,10 @@ const ShoppingCart = ({product}) => {
         <CartItemsWrapper>
           {cartMap()}
         </CartItemsWrapper>
+        <TotalRow>
+          <span>Total: </span>
+          <span>${priceTotal}.00</span>
+        </TotalRow>
       </Modal>
     )
   }
@@ -95,8 +102,8 @@ const Modal = styled.div`
   top: 0;
   right: 0;
   padding: 1rem;
-  background-color: #fff;
-  border: 1px solid grey;
+  background-color: beige;
+  border-radius: 1rem;
 `
 
 const TopWrapper = styled.div`
@@ -136,4 +143,12 @@ const Thumbnail = styled.img`
   width: 4rem;
   height: 4rem;
   margin-right: 1rem;
+`
+
+const TotalRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 20px;
 `

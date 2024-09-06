@@ -11,7 +11,7 @@ import { database } from '../../utils/database';
 import { screenSize } from '../../utils/screensize';
 
 import leftIcon from '../../assets/left-icon.png'
-import { addItem, updateTotal } from '../../features/cartSlice';
+import { addItem } from '../../features/cartSlice';
 
 
 const Product = () => {
