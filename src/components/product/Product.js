@@ -76,8 +76,8 @@ const Product = () => {
             <Hr />
             <Description>{product.description}</Description>
           </Column>
-          <Button onClick={() => dispatch(addItem({product}))}>
-            Add to cart
+          <Button onClick={() => dispatch(addItem({product}))} >
+             Add to cart
           </Button>
         </Content>
       </ProductInfo>
@@ -205,9 +205,6 @@ const Content = styled.div`
 
 const CarouselWrapper = styled.div`
   width: 80%;
-  // height: 10rem;
-  // border: 1px solid red;
-  // margin-top: 10rem;
 `
 
 const Span = styled.span`
@@ -226,6 +223,11 @@ const Button = styled.button`
   color: #fff;
   border-radius: 0.5rem;
   background-color: #000;
+
+  &:hover {
+    background-color: grey;
+    cursor: pointer;
+  }
 `
 
 const Image = styled.img`

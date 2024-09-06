@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components';
-import taborSofa from '../../assets/products/tabor-green-sofa.jpeg'
+import { Link } from "react-router-dom";
 
+import taborSofa from '../../assets/products/tabor-green-sofa.jpeg'
 import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = ({product}) => {
@@ -12,8 +13,6 @@ const ShoppingCart = ({product}) => {
 
 
   const [shoppingCartOpen, setShoppingCartOpen] = useState(false)
-
-  console.log('product', product)
 
   const cartMap = () => {
     return product.map((item, i) => {
@@ -49,8 +48,9 @@ const ShoppingCart = ({product}) => {
         </CartItemsWrapper>
         <TotalRow>
           <span>Total: </span>
-          <span>${priceTotal}.00</span>
+          <TotalPrice>${priceTotal}.00</TotalPrice>
         </TotalRow>
+        <CheckoutButton to='/checkout'>Checkout</CheckoutButton>
       </Modal>
     )
   }
@@ -76,6 +76,9 @@ const CartButton = styled.button`
   margin: 2rem;
   border: none;
   background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const CartImage = styled.img`
@@ -151,4 +154,30 @@ const TotalRow = styled.div`
   justify-content: space-between;
   margin-top: 1rem;
   font-size: 20px;
+`
+
+const TotalPrice = styled.span`
+  font-weight: 700;
+`
+
+const CheckoutButton = styled(Link)`
+  display: flex;
+  width: 10rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 3rem;
+  background-color: olive;
+  border-radius: 2rem;
+  border: none;
+  font-size: 16px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
 `
