@@ -28,8 +28,9 @@ const CheckoutWrapper = styled.div`
 const InfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 48%;
+  width: 37rem;
   height: 50rem;
+  padding: 1rem;
   background-color: moccasin;
   border-radius: 2rem;
 `
