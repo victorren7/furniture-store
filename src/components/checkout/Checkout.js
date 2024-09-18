@@ -31,6 +31,7 @@ const InfoColumn = styled.div`
   width: 37rem;
   height: 50rem;
   padding: 1rem;
+  gap: .7rem;
   background-color: moccasin;
   border-radius: 2rem;
 `

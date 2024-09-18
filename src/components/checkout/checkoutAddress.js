@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { State, City }  from 'country-state-city';
 import { isEmpty } from 'lodash';
+import Input from '../components/Input';
 function CheckoutAddress() {
 
   const countryStates = State.getStatesOfCountry('US')
@@ -48,7 +49,7 @@ function CheckoutAddress() {
         <Label>
           Address:
           <Input 
-            value='Address' 
+            value={address} 
             type='text' 
             onChange={(e) => setAddress(e.target.value)} 
             full 
@@ -75,7 +76,7 @@ function CheckoutAddress() {
         <Label>
           Zip Code:
           <Input 
-            value='Zip' 
+            value={zip} 
             type='text' 
             onChange={(e) => setZip(e.target.value)} 
             full
@@ -84,13 +85,12 @@ function CheckoutAddress() {
         <Label>
           Email:
           <Input 
-            value='Email' 
+            value={email} 
             type='text'
             onChange={(e) => setEmail(e.target.value)} 
             full
           />
         </Label>
-
       </Form>
     </Wrapper>
   )
@@ -128,16 +128,6 @@ const Select = styled.select`
 
 const Label = styled.label`
   font-size: 15px;
-`
-
-const Input = styled.input`
-  width: ${props => props.full ? '35rem' : '16rem'};
-  height: 2rem;
-  border: .08rem lightgrey solid;
-  border-radius: .5rem;
-  color: grey;
-  margin-top: .3rem;
-  padding: .5rem;
 `
 
 const AddRow = styled.div`
