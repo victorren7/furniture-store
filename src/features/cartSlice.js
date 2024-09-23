@@ -5,7 +5,7 @@ const initialState = {
   products: database,
   inShoppingCart: [],
   amount: 0,
-  total: 0
+  total: 0,
 }
 
 const cartSlice = createSlice({
@@ -24,6 +24,10 @@ const cartSlice = createSlice({
       state.total -= payload.product.price
 
     },
+    increaseAmount: (state, {payload}) => {
+      const item = state.products.find(item => item.name === payload.name)
+      item.amount++
+    }
     // updateTotal: (state) => {
     //   for (let i = 0; i < state.inShoppingCart.length; i++) {
     //     const element = state.inShoppingCart[i];
@@ -33,6 +37,6 @@ const cartSlice = createSlice({
   }
 })
 
-export const { addItem, removeItem } = cartSlice.actions
+export const { addItem, removeItem, increaseAmount } = cartSlice.actions
 
 export default cartSlice.reducer;

@@ -20,10 +20,21 @@ const ShoppingCart = ({product}) => {
         <div>
           <CartRow key={i}>
             <ItemInfo>
-              <Thumbnail alt={product.name} src={taborSofa} />
+              <Thumbnail alt={item.name} src={item.image} />
               <CartItemSpan>{item.name}</CartItemSpan>
             </ItemInfo>
-            <CartItemSpan>${item.price}.00</CartItemSpan>
+            <AmountCol>
+              <CartItemSpan>Amount</CartItemSpan>
+              <AmountRow>
+                <AmButton>-</AmButton>
+                <span>{item.amount}</span>
+                <AmButton>+</AmButton>
+              </AmountRow>
+            </AmountCol>
+            <AmountCol>
+              <CartItemSpan>${item.price}.00</CartItemSpan>
+              <RemoveButton>Remove</RemoveButton>
+            </AmountCol>
           </CartRow>
           <hr/>
         </div>
@@ -43,9 +54,9 @@ const ShoppingCart = ({product}) => {
           </CloseButton>
         </TopWrapper>
         <hr />
-        <CartItemsWrapper>
+        <div>
           {cartMap()}
-        </CartItemsWrapper>
+        </div>
         <TotalRow>
           <span>Total: </span>
           <TotalPrice>${priceTotal}.00</TotalPrice>
@@ -95,7 +106,15 @@ const Amount = styled.span`
   margin: -1rem 0 0 3.3rem;
 `
 
-const CartItemsWrapper = styled.div`
+const AmountCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const AmountRow = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 const Modal = styled.div`
@@ -130,6 +149,7 @@ const CartRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 
 const ItemInfo = styled.div`
@@ -138,7 +158,7 @@ const ItemInfo = styled.div`
 `
 
 const CartItemSpan = styled.span`
-  font-size: 18px;
+  font-size: 13px;
   align-self: center;
 `
 
@@ -180,4 +200,16 @@ const CheckoutButton = styled(Link)`
     background-color: lightgrey;
     cursor: pointer;
   }
+`
+
+const RemoveButton = styled.button`
+  color: red;
+  font-size: 11px;
+  border: none;
+  background-color: transparent;
+`
+
+const AmButton = styled.button`
+  border: none;
+  background-color: transparent;
 `
