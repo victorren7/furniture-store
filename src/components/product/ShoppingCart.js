@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-import { increaseAmount, removeItem } from '../../features/cartSlice';
+import { decreaseAmount, increaseAmount, removeItem } from '../../features/cartSlice';
 import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = ({product}) => {
@@ -28,7 +28,9 @@ const ShoppingCart = ({product}) => {
             <AmountCol>
               <CartItemSpan>Amount</CartItemSpan>
               <AmountRow>
-                <AmButton>-</AmButton>
+                <AmButton onClick={() => dispatch(decreaseAmount({item}))}>
+                  -
+                </AmButton>
                 <span>{item.amount}</span>
                 <AmButton onClick={() => dispatch(increaseAmount({item}))}>
                   +

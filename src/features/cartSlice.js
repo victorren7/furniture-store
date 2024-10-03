@@ -28,22 +28,35 @@ const cartSlice = createSlice({
 
     },
     increaseAmount: (state, {payload}) => {
-      console.log('payload', payload)
-      console.log('state', state)
       const item = state.inShoppingCart.find(item => item.name === payload.item.name)
-      console.log('item', item)
       item.amount++
       state.amount++
+    },
+    decreaseAmount: (state , {payload}) => {
+      const item = state.inShoppingCart.find(item => item.name === payload.item.name)
+      item.amount--
+      state.amount--
+    },
+    updateTotal: (state) => {
+      let amount = 0
+      let total = 0
+
+      state.inShoppingCart.forEach(item => {
+        // amount += item.amount
+        total += item.amount * item.price
+      })
+
+      state.total = total 
     }
-    // updateTotal: (state) => {
-    //   for (let i = 0; i < state.inShoppingCart.length; i++) {
-    //     const element = state.inShoppingCart[i];
-    //    console.log('element', element)
-    //   }
-    // }
   }
 })
 
-export const { addItem, removeItem, increaseAmount } = cartSlice.actions
+export const { 
+  addItem, 
+  removeItem, 
+  increaseAmount, 
+  decreaseAmount, 
+  updateTotal 
+} = cartSlice.actions
 
 export default cartSlice.reducer;
