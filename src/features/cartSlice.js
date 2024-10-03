@@ -14,19 +14,26 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, {payload}) => {
       state.inShoppingCart.push(payload.product)
+      console.log('state1', state.inShoppingCart)
       state.amount++
       state.total += payload.product.price
     },
     removeItem: (state, {payload}) => {
-      const item = state.products.find(item => item.name === payload.name)
-      state.inShoppingCart.filter(item.name !== payload.name)
+      const {id} = payload.item
+
+      state.inShoppingCart = state.inShoppingCart.filter(item => item.id !== id)
       state.amount--
-      state.total -= payload.product.price
+    console.log('state.amount', state.amount)
+      state.total -= payload.price
 
     },
     increaseAmount: (state, {payload}) => {
-      const item = state.products.find(item => item.name === payload.name)
+      console.log('payload', payload)
+      console.log('state', state)
+      const item = state.inShoppingCart.find(item => item.name === payload.item.name)
+      console.log('item', item)
       item.amount++
+      state.amount++
     }
     // updateTotal: (state) => {
     //   for (let i = 0; i < state.inShoppingCart.length; i++) {

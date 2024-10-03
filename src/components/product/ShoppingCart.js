@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
-import taborSofa from '../../assets/products/tabor-green-sofa.jpeg'
+import { increaseAmount, removeItem } from '../../features/cartSlice';
 import cartIcon from '../../assets/cart-icon.png'
 
 const ShoppingCart = ({product}) => {
 
   const productAmount = useSelector((store) => store.cart.inShoppingCart)
+  // const productAmount = useSelector((store) => store.cart)
+
   const priceTotal = useSelector((store) => store.cart.total)
 
-
   const [shoppingCartOpen, setShoppingCartOpen] = useState(false)
+  const dispatch = useDispatch()
 
   const cartMap = () => {
     return product.map((item, i) => {
       return (
-        <div>
-          <CartRow key={i}>
+        <div key={i}>
+          <CartRow>
             <ItemInfo>
               <Thumbnail alt={item.name} src={item.image} />
               <CartItemSpan>{item.name}</CartItemSpan>
@@ -28,12 +30,16 @@ const ShoppingCart = ({product}) => {
               <AmountRow>
                 <AmButton>-</AmButton>
                 <span>{item.amount}</span>
-                <AmButton>+</AmButton>
+                <AmButton onClick={() => dispatch(increaseAmount({item}))}>
+                  +
+                </AmButton>
               </AmountRow>
             </AmountCol>
             <AmountCol>
               <CartItemSpan>${item.price}.00</CartItemSpan>
-              <RemoveButton>Remove</RemoveButton>
+              <RemoveButton onClick={() => dispatch(removeItem({item}))}>
+                Remove
+              </RemoveButton>
             </AmountCol>
           </CartRow>
           <hr/>
